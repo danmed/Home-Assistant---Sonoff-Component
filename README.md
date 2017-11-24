@@ -15,9 +15,9 @@ switch:
 
 # Configuration variables:
 
-switches (Required): The array that contains all Sonoff switches.
-identifier (Required): Name of the Kankun switch as slug. Multiple entries are possible.
-host (Required): Hostname or IP address of the switch on the local network.
-name (Optional): Friendly name of the switch.
-username (Optional): Username for basic authentication.
-password (Optional): Password for basic authentication.
+* switches (Required): The array that contains all Sonoff switches.
+* identifier (Required): Name of the Kankun switch as slug. Multiple entries are possible.
+* host (Required): Hostname or IP address of the switch on the local network.
+* name (Optional): Friendly name of the switch.
+* username (Optional): Username for basic authentication.
+* password (Optional): Password for basic authentication.
