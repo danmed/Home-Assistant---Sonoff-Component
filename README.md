@@ -5,6 +5,9 @@ This is a hack of the Kankun component and as such there are redundant propertie
 # Usage
 
 platform: sonoff
+
 switches:
+
   host: 192.168.2.x
+
   name: Sonoff Smart Plug
