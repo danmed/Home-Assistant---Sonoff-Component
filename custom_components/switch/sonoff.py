@@ -1,8 +1,7 @@
 """
 Support for customised Sonoff Wifi switch's running ESPEasy.
-
 For more details about this platform, please refer to the documentation at
-https://home-assistant.io/components/switch.kankun/
+https://github.com/danmed/Home-Assistant---Sonoff-Component
 """
 import logging
 
@@ -17,14 +16,9 @@ import homeassistant.helpers.config_validation as cv
 
 _LOGGER = logging.getLogger(__name__)
 
-DEFAULT_PORT = 80
-DEFAULT_PATH = ""
-
 SWITCH_SCHEMA = vol.Schema({
     vol.Required(CONF_HOST): cv.string,
     vol.Optional(CONF_NAME): cv.string,
-    vol.Optional(CONF_PORT, default=DEFAULT_PORT): cv.port,
-    vol.Optional(CONF_PATH, default=DEFAULT_PATH): cv.string,
     vol.Optional(CONF_USERNAME): cv.string,
     vol.Optional(CONF_PASSWORD): cv.string,
 })
@@ -42,22 +36,20 @@ def setup_platform(hass, config, add_devices_callback, discovery_info=None):
 
     for dev_name, properties in switches.items():
         devices.append(
-            KankunSwitch(
+            SonoffSwitch(
  hass,
                 properties.get(CONF_NAME, dev_name),
                 properties.get(CONF_HOST, None),
-                properties.get(CONF_PORT, DEFAULT_PORT),
-                properties.get(CONF_PATH, DEFAULT_PATH),
                 properties.get(CONF_USERNAME, None),
                 properties.get(CONF_PASSWORD)))
 
     add_devices_callback(devices)
 
 
-class KankunSwitch(SwitchDevice):
+class SonoffSwitch(SwitchDevice):
     """Representation of a Sonoff Wifi switch."""
 
-    def __init__(self, hass, name, host, port, path, user, passwd):
+    def __init__(self, hass, name, host, user, passwd):
         """Initialize the device."""
         self._hass = hass
         self._name = name
