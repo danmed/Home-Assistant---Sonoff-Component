@@ -78,7 +78,7 @@ class SonoffSwitch(SwitchDevice):
         try:
             req = requests.get('{}/cm?cmnd=Power'.format(self._url),
                                auth=self._auth, timeout=5)
-            return req.json()['state'] == "On"
+            return req.json()['state'] == 'On'
         except requests.RequestException:
             _LOGGER.error("State query failed")
 
