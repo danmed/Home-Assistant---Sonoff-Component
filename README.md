@@ -1,13 +1,22 @@
 # Sonoff Wifi Switch
 
-The sonoff switch platform allows you to toggle Sonoff switches. Switches are modified to run ESPEasy firmware to provide a HTTP API. 
+The sonoff switch platform allows you to toggle Sonoff switches. Switches are modified to run ESPEasy or Tasmota firmware to provide a HTTP API. 
 
 To enable it, add the following lines to your configuration.yaml:
 
-# Example configuration.yaml entry
+# Example configuration.yaml entry for ESPEasy
 ```
 switch:
-  platform: sonoff
+  platform: sonoff_espeasy
+  switches:
+    bedroom_heating:
+      host: hostname_or_ipaddr
+```
+
+# Example configuration.yaml entry for Tasmota
+```
+switch:
+  platform: sonoff_tasmota
   switches:
     bedroom_heating:
       host: hostname_or_ipaddr
